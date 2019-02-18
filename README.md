@@ -1,2 +1,2 @@
-# Lyrical-GraphQL
-Starter project from a GraphQL course on Udemy.com
+# MyPrice 3.0 - THD Product Prototype
+Exploring GraphQL... 
