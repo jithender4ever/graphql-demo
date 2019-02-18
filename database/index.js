@@ -81,6 +81,40 @@ const skuMarketDetails = [
   }
 ];
 
-module.exports =
-  {skuMarketDetails, skuStoreDetails, products};
+module.exports = class THDProductData {
 
+  getSKUPricesInMarkets(skuNumbers, marketNumbers) {
+    return skuMarketDetails.map((skuMarket) => {
+      if (skuNumbers.includes(skuMarket.skuNumber) && marketNumbers.includes(skuMarket.marketNumber)) {
+        return skuMarket;
+      }
+    });
+  }
+
+  getProduct(skuNumber) {
+    return products.filter(product => product.skuNumber === skuNumber);
+  }
+
+  addProduct(args) {
+    const product = { ...args, skuDescription: "TEST", onlineViews: 100};
+    products.push(product);
+
+    return product;
+  }
+
+  addSkuToAMarket(args) {
+    const skuMarket = {
+          ...args,
+          permanentPrice: 110.00,
+          temporaryPrice: 98.99,
+          tempPriceExpDate: "2019-02-28",
+          landedCost: 60.00,
+          inventory: 210
+        };
+
+    skuMarketDetails.push(skuMarket);
+
+    return skuMarket;
+  }
+
+};

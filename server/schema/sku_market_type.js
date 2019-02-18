@@ -7,8 +7,9 @@ const {
     GraphQLFloat,
 } = graphql;
 
-const {products} = require('../../database');
 const ProductType = require('./product_type');
+const THDProductData = require('../../database');
+const thdProduct = new THDProductData();
 
 const SKUMarketType = new GraphQLObjectType({
    name: 'SKUMarket',
@@ -23,18 +24,10 @@ const SKUMarketType = new GraphQLObjectType({
        product: {
            type: ProductType,
            resolve(parentValue, args) {
-               return getProduct(parentValue.skuNumber)[0];
+               return thdProduct.getProduct(parentValue.skuNumber)[0];
            }
        }
    }
 });
-
-getProduct = (skuNumber) => {
-    console.log('skuNumber:', skuNumber);
-    console.log('products', products);
-    console.log(_.filter(products, product => product.skuNumber === skuNumber));
-    return _.filter(products, product => product.skuNumber === skuNumber);
-
-};
 
 module.exports = SKUMarketType;
