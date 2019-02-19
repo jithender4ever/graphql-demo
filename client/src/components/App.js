@@ -2,25 +2,15 @@ import React from 'react';
 import {compose, graphql} from 'react-apollo';
 import getSKUMarketPrices from '../queries/getSKUMarketPrices';
 import SkuComponent from "./SkuComponent";
-import SkuListComponent from "./SkuListComponent";
+import SkuList from "./SkuList";
 import renderSkus from './utils';
 import addSku from "../mutations/addSku";
+import SKUCreate from "./SKUCreate";
 
 class App extends React.Component {
 
     constructor(props) {
         super(props);
-
-        this.handleAddSku = this.handleAddSku.bind(this);
-    }
-
-    handleAddSku() {
-        console.log(this.props);
-        this.props.mutate({
-            variables: {
-                skuNumber: "001"
-            }
-        }).then(({data}) => console.log('got data', data));
     }
 
     render() {
@@ -35,30 +25,26 @@ class App extends React.Component {
                           </div>
                       </div>
                       <SkuComponent />
-                      <SkuListComponent />
+                      <SkuList />
+
                   </div>
                   <div className={'ui centered grid'}>
-                      <div className={'four wide column'}>
-                    <button className={'fluid ui primary button'} onClick={() => this.handleAddSku()}>Add a SKU</button>
-                      </div>
+                    <div className={'four wide column'}>
+                        <SKUCreate />
+                    </div>
                   </div>
               </div>
           )  ;
     }
 }
 
-export default compose(
-    graphql(getSKUMarketPrices, {
-    options: (props) => {
+export default graphql(getSKUMarketPrices, {
+    options: () => {
         return {
             variables: {
-                skuNumbers: ["123456", "111"],
-                marketNumbers: [1, 2]
+                skus: ["123456", "111"],
+                markets: [1, 2]
             }
         }
     }
-    }),
-    graphql(addSku)
-)(App);
-
-// export default graphql(getSKUMarketPrices)(App);
+})(App);

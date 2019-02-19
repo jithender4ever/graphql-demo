@@ -1,5 +1,4 @@
 const Axios = require('axios');
-
 const graphql = require('graphql');
 const { GraphQLObjectType, GraphQLString, GraphQLInt } = graphql;
 

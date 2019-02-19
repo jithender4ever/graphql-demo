@@ -25,8 +25,8 @@ export default graphql(getSKUMarketPrices, {
     options: (props) => {
         return {
             variables: {
-                skuNumbers: ["123456"],
-                marketNumbers: [1, 2]
+                skus: ["123456"],
+                markets: [1, 2]
             }
         }
     }

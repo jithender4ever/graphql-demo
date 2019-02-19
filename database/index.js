@@ -9,6 +9,16 @@ const products =
         "skuNumber": "111",
         "skuDescription": "I am another SKU",
         "onlineViews": 1200
+      },
+     {
+        "skuNumber": "99999",
+        "skuDescription": "DOORS",
+        "onlineViews": 1111
+      },
+      {
+        "skuNumber": "88888",
+        "skuDescription": "WINDOWS",
+        "onlineViews": 1200
       }
   ];
 
@@ -83,9 +93,9 @@ const skuMarketDetails = [
 
 module.exports = class THDProductData {
 
-  getSKUPricesInMarkets(skuNumbers, marketNumbers) {
+  getSKUPricesInMarkets(skus, markets) {
     return skuMarketDetails.map((skuMarket) => {
-      if (skuNumbers.includes(skuMarket.skuNumber) && marketNumbers.includes(skuMarket.marketNumber)) {
+      if (skus.includes(skuMarket.skuNumber) && markets.includes(skuMarket.marketNumber)) {
         return skuMarket;
       }
     });
@@ -95,9 +105,15 @@ module.exports = class THDProductData {
     return products.filter(product => product.skuNumber === skuNumber);
   }
 
+  getProducts() {
+    return products;
+  }
+
   addProduct(args) {
     const product = { ...args, skuDescription: "TEST", onlineViews: 100};
     products.push(product);
+
+    console.log('products after adding:', products);
 
     return product;
   }

@@ -5,7 +5,8 @@ const addSku = gql`
 mutation addSKU($skuNumber: String){
     addSKU(skuNumber: $skuNumber) {
         skuNumber,
-        skuDescription
+        skuDescription,
+        onlineViews
     }
 }
     `;
