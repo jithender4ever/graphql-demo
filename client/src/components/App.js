@@ -1,10 +1,9 @@
 import React from 'react';
-import {compose, graphql} from 'react-apollo';
+import { graphql } from 'react-apollo';
 import getSKUMarketPrices from '../queries/getSKUMarketPrices';
 import SkuComponent from "./SkuComponent";
 import SkuList from "./SkuList";
 import renderSkus from './utils';
-import addSku from "../mutations/addSku";
 import SKUCreate from "./SKUCreate";
 
 class App extends React.Component {
@@ -21,7 +20,9 @@ class App extends React.Component {
                       <div className={'ui segment'}>
                           <h3 className={'ui block header'}>List of SKUs with prices from ALL markets</h3>
                           <div className="ui relaxed divided list">
+
                             {renderSkus(this.props.data)}
+
                           </div>
                       </div>
                       <SkuComponent />

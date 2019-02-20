@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {ApolloClient} from 'apollo-client';
+import { ApolloClient } from 'apollo-client';
 import { ApolloProvider } from "react-apollo";
 import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
@@ -20,9 +20,7 @@ const client = new ApolloClient({
 const Root = () => {
   return (
       <ApolloProvider client={client}>
-          <div>
-            <App className={'ui container'} />
-          </div>
+        <App className={'ui container'} />
       </ApolloProvider>
   );
 };
