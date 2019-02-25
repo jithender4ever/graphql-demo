@@ -1,2 +1,4 @@
-# MyPrice 3.0 - THD Product Prototype
-Exploring GraphQL... 
+# GraphQL Demo
+
+This app uses express-graphql server.
+ 
